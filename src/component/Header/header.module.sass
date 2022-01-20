@@ -2,12 +2,25 @@
 @import ../../styles/_mixins
 
 .header-container
+    @include maxWidth($tablet)
+        padding: 2rem 0
+    @include maxWidth($mobile)
+        @include flex($flex-direction: column)
     @include flex($flex-direction: row, $justify-content: space-between, $align-items: center)
-    max-width: 192rem
-    height: 8rem
+    @include position($position: relative)
+    max-width: 136.6rem
+    height: 100%
     .logo
+        @include maxWidth($tablet)
+            width: 25rem
+            height: auto
         max-width: 100%
         height: auto
+    .tool-pc
+        @include flex($flex-direction: row, $justify-content: space-between, $align-items: center)
+        @include maxWidth($mobile)
+            display: none
+        width: 100%
     .change-language
         color: $icon-color
         &:hover
@@ -16,36 +29,59 @@
     .header-search
         @include position($position: relative)
         input
+            @include maxWidth($desktop)
+                max-width: 40rem
             @include text($font-size: 2rem)
-            width: 66.8rem
+            width: 50.8rem
             height: 4.8rem
             border-radius: 10rem
             border: none
             background-color: $bg-gray
             outline: none
             padding: 0.8rem 6rem
+        .search-icon, .close-icon
+            @include maxWidth($desktop)
+                margin: 1rem
+            @include maxWidth($tablet)
+                margin: 0.4rem
+            margin: 1.2rem
         .search-icon
             @include position($position: absolute, $top: 0, $left: 0)
             color: $icon-color
-            margin: 0.6rem
         .close-icon
             @include position($position: absolute, $top: 0, $right: 0)
             color: $text-blue
-            margin: 0.6rem
     .account
         @include flex($flex-direction: row)
         a
             text-decoration: none
         .sign-in, .register, .cart
+            @include maxWidth($tablet)
+                width: 16rem 
+            @include flex($flex-direction: row, $justify-content: center, $align-items: center)
             @include text($font-size: 2rem, $font-weight: 700)
+            width: 15rem
             color: $text-blue
             padding: 0.8rem 1.2rem
             border: 0.1rem solid $boder-blue-color
             border-radius: 0.5rem
             margin-right: 2rem
         .cart
+            @include flex($flex-direction: row, $align-items: center, $justify-content: center)
             border: none
             box-shadow: 0 0.2rem 0.7rem $box-shadow
-            display: inline-flex
             &-icon
                 margin-right: 0.5rem
+    .menu-icon
+        @include maxWidth($mobile)
+            @include position($position: absolute, $top: 5rem, $right: 2rem)
+            display: block
+            color: $icon-color
+        display: none
+    .toggle
+        @include flex($flex-direction: row, $justify-content: space-between, $align-items: center)
+        width: 100%
+        @include maxWidth($mobile)
+            flex-direction: column
+            row-gap: 3rem
+            padding: 2rem
