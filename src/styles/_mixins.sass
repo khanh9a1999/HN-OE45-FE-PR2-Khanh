@@ -1,0 +1,31 @@
+@mixin flex($flex-direction, $justify-content: unset, $align-items: unset) 
+    display: flex
+    flex-direction: $flex-direction
+    -webkit-flex-direction: $flex-direction
+    -moz-flex-direction: $flex-direction
+    -ms-flex-direction: $flex-direction
+    -o-flex-direction: $flex-direction
+    justify-content: $justify-content
+    -webkit-justify-content: $justify-content
+    -moz-justify-content: $justify-content
+    -ms-justify-content: $justify-content
+    -o-justify-content: $justify-content
+    align-items: $align-items
+    -webkit-align-items: $align-items
+    -moz-align-items: $align-items
+    -ms-align-items: $align-items
+    -o-align-items: $align-items
+
+@mixin position($position, $top: unset, $right: unset, $left: unset)
+    position: $position
+    -ms-position: $position
+    -webkit-position: $position
+    -o-position: $position
+    top: $top
+    right: $right
+    left: $left
+
+@mixin text($font-size, $font-weight: 400, $line-height: unset)
+    font-size: $font-size
+    font-weight: $font-weight
+    line-height: $line-height
