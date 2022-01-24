@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from './header.module.sass'
+import styles from './Header.module.sass'
 import Logo from '../../assets/images/Logo.png'
 import { Link } from 'react-router-dom'
 import SearchLineIcon from 'remixicon-react/SearchLineIcon'

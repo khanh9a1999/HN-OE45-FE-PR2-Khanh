@@ -1,0 +1,17 @@
+@import ../../../../styles/_variables
+@import ../../../../styles/_mixins
+
+.categories
+    h2
+        @include text($font-size: 2.4rem, $font-weight: 500)
+        margin-bottom: 2rem
+    .list-categories
+        list-style: none
+        padding-left: 2rem
+    .item-categories
+        font-size: 2rem
+        color: $text-black
+        padding-bottom: 1rem 
+        &:hover
+            color: $text-blue
+            cursor: pointer

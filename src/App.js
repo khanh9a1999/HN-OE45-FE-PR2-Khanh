@@ -1,5 +1,5 @@
-import Header from "./component/Header/Header";
-import HomePage from './pages/HomePage'
+import Header from "./components/Header/Header";
+import HomePage from './pages/HomePage/HomePage'
 import "./styles/app.sass"
 
 function App() {

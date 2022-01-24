@@ -1,0 +1,17 @@
+@import ../../../../styles/_variables
+@import ../../../../styles/_mixins
+
+.prices
+    h2
+        @include text($font-size: 2.4rem, $font-weight: 500)
+        margin-bottom: 2rem
+    .prices-range
+        display: flex
+        flex-direction: column
+        font-size: 2rem
+        color: $text-black
+        padding-bottom: 1rem 
+        padding-left: 2rem
+        span:hover
+            color: $text-blue
+            cursor: pointer

@@ -4,6 +4,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/styles.sass'
 import './i18n'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.render(
   <Suspense fallback="loading...">

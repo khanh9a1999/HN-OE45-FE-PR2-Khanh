@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './navtypes.module.sass'
+import styles from './Navtypes.module.sass'
 import ShirtLineIcon from 'remixicon-react/ShirtLineIcon'
 import HeadphoneLineIcon from 'remixicon-react/HeadphoneLineIcon'
 import Cake2LineIcon from 'remixicon-react/Cake2LineIcon'
