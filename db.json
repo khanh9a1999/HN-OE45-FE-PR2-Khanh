@@ -2,8 +2,15 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "json-server",
+      "desc": "typicode",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "dsadsa",
+      "image": "dsds",
+      "rating": 2,
+      "price_range": "50-100"
     }
   ],
   "comments": [
