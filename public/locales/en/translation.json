@@ -1,5 +1,16 @@
 {
     "Register": "Register",
     "Sign in": "Sign in",
-    "Cart": "Cart"
+    "Cart": "Cart",
+    "Add to cart": "Add to cart",
+    "Categories": "Categories",
+    "Brand": "Brand",
+    "Price": "Price",
+    "Rating": "Rating",
+    "Features": "Features",
+    "Default": "Default",
+    "Price ESC": "Price ESC",
+    "Price DESC": "Price DESC",
+    "Show all": "Show All",
+    "Sale off": "Sale Off"
 }
