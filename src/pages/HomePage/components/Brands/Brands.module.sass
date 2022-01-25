@@ -1,0 +1,18 @@
+@import ../../../../styles/_variables
+@import ../../../../styles/_mixins
+
+.brands
+    h2
+        @include text($font-size: 2.4rem, $font-weight: 500)
+        margin-bottom: 2rem
+    .form-check
+        font-size: 2rem
+        column-gap: 1rem
+        padding-left: 2rem
+        label
+            font-size: 2rem
+            color: $text-black
+            padding-bottom: 1rem 
+            &:hover
+                color: $text-blue
+                cursor: pointer
