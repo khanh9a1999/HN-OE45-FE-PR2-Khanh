@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './Header.module.sass'
-import Logo from '../../assets/images/Logo.png'
 import { Link } from 'react-router-dom'
+import Logo from '../../assets/images/Logo.png'
 import SearchLineIcon from 'remixicon-react/SearchLineIcon'
 import CloseLineIcon from 'remixicon-react/CloseLineIcon'
 import ShoppingCart2LineIcon from 'remixicon-react/ShoppingCart2LineIcon'

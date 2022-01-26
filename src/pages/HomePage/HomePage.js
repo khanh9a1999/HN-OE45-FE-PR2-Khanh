@@ -6,6 +6,7 @@ import  Categories  from './components/Categories/Categories'
 import Brands from './components/Brands/Brands'
 import Rating from './components/Rating/Rating'
 import Prices from './components/Prices/Prices'
+import Products from './components/Products/Products';
 import { Button } from 'react-bootstrap'
 
 function HomePage() {
@@ -27,6 +28,9 @@ function HomePage() {
                             <hr />
                             <Rating />
                         </aside>
+                    </Col>
+                    <Col md={9}>
+                        <Products />
                     </Col>
                 </Row>
             </Container> 
