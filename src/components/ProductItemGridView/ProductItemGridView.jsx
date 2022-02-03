@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ProductItem.module.sass'
+import styles from './ProductItemGridView.module.sass'
 import LuggageCartLineIcon from 'remixicon-react/LuggageCartLineIcon'
 import Star from '../Star/Star'
 import {useTranslation} from 'react-i18next'
@@ -10,9 +10,9 @@ function ProductItem({item}) {
 
     return (
         <div className={styles["item-products"]}>
-            <img src={`assets/images/${item.images}`} alt="img" />
+            <img src={`./assets/images/${item.image}`} alt="img" />
             <div className={styles["product-preview"]}>
-                <span className={styles["product-price"]}>{item.price}$</span>
+                <span className={styles["product-price"]}>{item.name}$</span>
                 <p className={styles["product-desc"]}>{item.desc}</p>
                 <div className="d-flex flex-column justify-content-center">
                     <div className={styles["product-rating"]}>
