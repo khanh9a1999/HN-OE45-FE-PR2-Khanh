@@ -1,53 +1,91 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Products.module.sass'
 import ListCheckIcon from 'remixicon-react/ListCheckIcon'
 import GridLineIcon from 'remixicon-react/GridLineIcon'
 import clsx from 'clsx'
-import ProductItem from '../../../../components/ProductItem/ProductItem'
-import {useTranslation} from 'react-i18next'
+import ProductItemGridView from '../../../../components/ProductItemGridView/ProductItemGridView'
+import ProductItemListView from '../../../../components/ProductItemListView/ProductItemListView' 
+import Pagination from '../../../../components/Pagination/Pagination'
+import { useTranslation } from 'react-i18next'
+import { getAllProducts, setFilter, getPagination, setCurrentPage } from '../../../../store/slices/ProductSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Products() {
 
     const { t } = useTranslation()
+    const dispatch = useDispatch()
+    const VIEW_MODES = [
+        {
+            value: 'grid',
+            icon: GridLineIcon,
+        },
+        {
+            value: 'list',
+            icon: ListCheckIcon,
+        },
+    ];
+    const PRODUCTS_LIST = ['Show all', 'Sale off', 'Features']
+    const { listAllProducts, isLoading } = useSelector( state => state.products.allProducts)
+    const filter = useSelector( state => state.products.filter)
+    const [viewMode, setViewMode] = useState(VIEW_MODES[0].value);
+    const [productsList, setProductsList] = useState(PRODUCTS_LIST[0])    
 
-    const listProducts = [
-        {
-            images: "Pr1.png",
-            price: 50,
-            desc: "Eligibe for Shipping To Mars or somewhere elses",
-            rating: 1
-        },
-        {
-            images: "Pr2.png",
-            price: 30,
-            desc: "Eligibe for Shipping To Mars or somewhere elses",
-            rating: 3
-        },
-        {
-            images: "Pr3.png",
-            price: 40,
-            desc: "Eligibe for Shipping To Mars or somewhere elses",
-            rating: 2
-        },
-        {
-            images: "Pr1.png",
-            price: 15,
-            desc: "Eligibe for Shipping To Mars or somewhere elses",
-            rating: 5
-        },
-        {
-            images: "Pr2.png",
-            price: 35,
-            desc: "Eligibe for Shipping To Mars or somewhere elses",
-            rating: 4
-        },
-        {
-            images: "Pr3.png",
-            price: 60,
-            desc: "Eligibe for Shipping To Mars or somewhere elses",
-            rating: 2
+    useEffect(() => {
+        dispatch(getAllProducts(filter))
+        dispatch(getPagination({
+            ...filter,
+            _page: '',
+            _limit: ''
+        }))
+    },[filter, dispatch])
+
+    function ListView() {
+        return (
+            <div className={styles["list-view"]}>
+                { 
+                    isLoading ? <h1>Loading...</h1> : listAllProducts.map((item, index) => (
+                                                        <ProductItemGridView
+                                                            item={item}
+                                                            key={index}
+                                                        />
+                                                    ))
+                }
+            </div>
+        )
+    }
+
+    function GridView() {
+        return (
+            <div className={styles["grid-view"]}>
+                {
+                    isLoading ? <h1>Loading...</h1> : listAllProducts.map((item, index) => (
+                        <ProductItemListView
+                            item={item}
+                            key={index}
+                        />
+                    ))
+                }
+            </div>
+        )
+    }
+
+    function handleSortByProductsList(item) {
+        if (item === "Show all") {
+            dispatch(setFilter({
+                _page: 1,
+                _limit: 2
+            }))
+            setProductsList(item)
+        } else {
+            dispatch(setFilter({
+                ...filter,
+                _page: 1,
+                label_like: item
+            }))
+            setProductsList(item)
         }
-    ]
+        dispatch(setCurrentPage(1))
+    }
 
     return (
         <div className={styles["products"]}>
@@ -58,27 +96,30 @@ function Products() {
                     <option value="desc">{t("Price DESC")}</option>
                 </select>
                 <div className={styles["opt-products"]}>
-                    <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" className="btn-check" name="products-list" id="show-all" />
-                        <label className={clsx(styles["sort-listproduct"], "btn btn-outline-primary")} htmlFor="show-all">{t("Show all")}</label>
-
-                        <input type="radio" className="btn-check" name="products-list" id="sale-off" />
-                        <label className={clsx(styles["sort-listproduct"], "btn btn-outline-primary")} htmlFor="sale-off">{t("Sale off")}</label>
-
-                        <input type="radio" className="btn-check" name="products-list" id="features" />
-                        <label className={clsx(styles["sort-listproduct"], "btn btn-outline-primary")} htmlFor="features">{t("Features")}</label>
-                    </div>
-                    <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" className="btn-check" name="list-types" id="list-products" />
-                        <label className={clsx(styles["type-list"], "btn btn-outline-primary")} htmlFor="list-products">
-                            <ListCheckIcon />
-                        </label>
-
-                        <input type="radio" className="btn-check" name="list-types" id="grid-products" />
-                        <label className={clsx(styles["type-list"], "btn btn-outline-primary")} htmlFor="grid-products">
-                            <GridLineIcon />
-                        </label>
-                    </div>
+                    {
+                        PRODUCTS_LIST.map( item => (
+                            <button className={clsx(
+                                styles["button"],
+                                item === productsList && styles.active
+                              )}
+                              onClick={() => handleSortByProductsList(item)}
+                            >
+                                {item}
+                            </button>
+                        ))
+                    }
+                    {
+                        VIEW_MODES.map(({ value, icon: Icon }) => (
+                            <button className={clsx(
+                                styles["button"],
+                                value === viewMode && styles.active
+                              )}
+                              onClick={() => setViewMode(value)}
+                            >
+                                <Icon />
+                            </button>
+                         ))
+                    }
                 </div>
             </div>
             <div className={styles["related-search"]}>
@@ -87,16 +128,10 @@ function Products() {
                 <span className={styles["item-related"]}>plan tree</span>
                 <span className={styles["item-related"]}>david backben</span>
             </div>
-            <div className={styles["list-products"]}>
-                {
-                    listProducts.map((item, index) => (
-                        <ProductItem
-                            item={item}
-                            key={index}
-                        />
-                    ))
-                }
-            </div>
+            {
+                (viewMode === 'grid') ? <ListView /> : <GridView />
+            }
+            <Pagination />
         </div>
     );
 }
