@@ -12,7 +12,8 @@ function ProductItemListView({item}) {
         <div className={styles["item-products"]}>
             <img src={`./assets/images/${item.image}`} alt="img" />
             <div className={styles["product-preview"]}>
-                <span className={styles["product-price"]}>{item.name}$</span>
+                <span className={styles["product-name"]}>{item.name}</span>
+                <span className={styles["product-price"]}>{item.price}$</span>
                 <p className={styles["product-desc"]}>{item.desc}</p>
                 <div className="d-flex align-items-center gap-5">
                     <div className={styles["product-rating"]}>

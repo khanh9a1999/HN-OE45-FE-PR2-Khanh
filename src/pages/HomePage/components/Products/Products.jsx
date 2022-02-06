@@ -7,7 +7,7 @@ import ProductItemGridView from '../../../../components/ProductItemGridView/Prod
 import ProductItemListView from '../../../../components/ProductItemListView/ProductItemListView' 
 import Pagination from '../../../../components/Pagination/Pagination'
 import { useTranslation } from 'react-i18next'
-import { getAllProducts, setFilter, getPagination, setCurrentPage } from '../../../../store/slices/ProductSlice'
+import { getAllProducts, setFilter, getPagination, setCurrentPage, setInputSearch  } from '../../../../store/slices/ProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 function Products() {
@@ -24,11 +24,12 @@ function Products() {
             icon: ListCheckIcon,
         },
     ];
-    const PRODUCTS_LIST = ['Show all', 'Sale off', 'Features']
+    const PRODUCTS_LIST = [t('Show All'), t('Sale Off'), t('Features')]
     const { listAllProducts, isLoading } = useSelector( state => state.products.allProducts)
     const filter = useSelector( state => state.products.filter)
     const [viewMode, setViewMode] = useState(VIEW_MODES[0].value);
-    const [productsList, setProductsList] = useState(PRODUCTS_LIST[0])    
+    const [productsList, setProductsList] = useState(PRODUCTS_LIST[0])   
+    const relatedSearch = useSelector( state => state.products.relatedSearch) 
 
     useEffect(() => {
         dispatch(getAllProducts(filter))
@@ -70,7 +71,7 @@ function Products() {
     }
 
     function handleSortByProductsList(item) {
-        if (item === "Show all") {
+        if (item === "Show All") {
             dispatch(setFilter({
                 _page: 1,
                 _limit: 2
@@ -87,21 +88,43 @@ function Products() {
         dispatch(setCurrentPage(1))
     }
 
+    function handleSortByPrice(e) {
+        const { value } = e.target
+
+        dispatch(setFilter({
+            ...filter,
+            _page: 1,
+            _sort: value === 'default' ? '' : 'price',
+            _order: value === 'default' ? '' : value
+        }));
+        dispatch(setCurrentPage(1))
+    } 
+
+    function handleFilterRalatedSearch(item) {
+        dispatch(setInputSearch(item))
+        dispatch(setFilter({
+            ...filter,
+            _page: 1,
+            name_like: item
+        }))
+    }
+
     return (
         <div className={styles["products"]}>
             <div className={styles["utilities-products"]}>
-                <select className={styles["sort-price"]}>
+                <select className={styles["sort-price"]} onChange={handleSortByPrice}>
                     <option value="default">{t("Default")}</option> 
                     <option value="esc">{t("Price ESC")}</option>
                     <option value="desc">{t("Price DESC")}</option>
                 </select>
                 <div className={styles["opt-products"]}>
                     {
-                        PRODUCTS_LIST.map( item => (
+                        PRODUCTS_LIST.map( (item, index) => (
                             <button className={clsx(
                                 styles["button"],
                                 item === productsList && styles.active
                               )}
+                              key={index}
                               onClick={() => handleSortByProductsList(item)}
                             >
                                 {item}
@@ -109,11 +132,12 @@ function Products() {
                         ))
                     }
                     {
-                        VIEW_MODES.map(({ value, icon: Icon }) => (
+                        VIEW_MODES.map(({ value, icon: Icon }, index) => (
                             <button className={clsx(
                                 styles["button"],
                                 value === viewMode && styles.active
                               )}
+                              key={index}
                               onClick={() => setViewMode(value)}
                             >
                                 <Icon />
@@ -124,12 +148,16 @@ function Products() {
             </div>
             <div className={styles["related-search"]}>
                 <h2>Related:</h2>
-                <span className={styles["item-related"]}>steam game</span>
-                <span className={styles["item-related"]}>plan tree</span>
-                <span className={styles["item-related"]}>david backben</span>
+                {
+                    relatedSearch.map((item, index) => {
+                        return (
+                            <span className={styles["item-related"]} key={index} onClick={() => handleFilterRalatedSearch(item)}>{item}</span>
+                        )
+                    })
+                }
             </div>
             {
-                (viewMode === 'grid') ? <ListView /> : <GridView />
+                viewMode == 'grid' ? <ListView /> : <GridView />
             }
             <Pagination />
         </div>
