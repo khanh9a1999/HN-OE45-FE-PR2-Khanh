@@ -72,6 +72,7 @@
             @include flex($flex-direction: row, $align-items: center, $justify-content: center)
             border: none
             box-shadow: 0 0.2rem 0.7rem $box-shadow
+            position: relative
             &-icon
                 margin-right: 0.5rem
     .menu-icon
@@ -87,3 +88,5 @@
             flex-direction: column
             row-gap: 3rem
             padding: 2rem
+    .cart-length
+        @include position($position: absolute, $top: 0, $right: 0.5rem)

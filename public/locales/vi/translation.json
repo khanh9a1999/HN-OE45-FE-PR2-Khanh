@@ -18,5 +18,17 @@
     "From": "Từ",
     "To": "Đến",
     "Submit": "Gửi",
-    "Input value must be positive": "Giá trị đầu vào phải là số dương"
+    "Input value must be positive": "Giá trị đầu vào phải là số dương",
+    "Confirm": "Xác nhận",
+    "My cart": "Giỏ hàng của tôi",
+    "Ok": "Đồng ý",
+    "Cancle": "Hủy bỏ",
+    "Product Image": "Hình ảnh sản phẩm",
+    "Product Name": "Tên sản phẩm",
+    "Product Unit Price": "Đơn giá sản phẩm",
+    "Product Quantity": "Số lượng sản phẩm",
+    "Into Price": "Thành tiền",
+    "Delete": "Xóa",
+    "Added": "Đã thêm",
+    "to the cart!": "vào giỏ hàng"
 }
