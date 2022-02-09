@@ -9,7 +9,8 @@ import GlobalLineIcon from 'remixicon-react/GlobalLineIcon'
 import {useTranslation} from 'react-i18next'
 import MenuLineIcon from 'remixicon-react/MenuLineIcon'
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch, setCartsLength } from '../../store/slices/ProductSlice'
+import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch } from '../../store/slices/ProductSlice'
+import { setCartsLength } from '../../store/slices/CartSlice';
 import useDebounce from '../../hooks/useDebounce'
 
 function Header() {
@@ -17,10 +18,10 @@ function Header() {
     const dispatch = useDispatch()
     const [language, setLanguage] = useState("en")
     const [toggle, setToggle] = useState(false)
-    const inputSearch = useSelector( state => state.products.inputSearch)
-    const filter = useSelector( state => state.products.filter)
+    const inputSearch = useSelector(state => state.products.inputSearch)
+    const filter = useSelector(state => state.products.filter)
     const debounce = useDebounce()
-    const cartsLength = useSelector( state => state.products.cartsLength)
+    const cartsLength = useSelector(state => state.cart.cartsLength)
 
     useEffect(()=> {
         dispatch(setCartsLength(cartsLength))

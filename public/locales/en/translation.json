@@ -30,5 +30,18 @@
     "Into Price": "Into Price",
     "Delete": "Delete",
     "Added": "Added",
-    "to the cart!": "to the cart!"
+    "to the cart!": "to the cart!",
+    "Review cart": "Review cart",
+    "Full name": "Full name",
+    "Email address": "Email address",
+    "Phone number": "Phone number",
+    "Delivery address": "Delivert address",
+    "Message": "Message",
+    "Payment method": "Payment method",
+    "Delivery information": "Delivery information",
+    "Required": "Required",
+    "Must be 4 charactor or more": "Must be 4 charactor or more",
+    "Please enter a valid email address": "Please enter a valid email address",
+    "Your order has been successfully placed": "Your order has been successfully placed",
+    "Confirm delivery information": "Confirm delivery information"
 }

@@ -135,9 +135,6 @@ export const ProductsSlice = createSlice({
         },
         setRelatedSearch: (state, action) => {
             state.relatedSearch.push(action.payload)
-        },
-        setCartsLength: (state, action) => {
-            state.cartsLength = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -211,6 +208,6 @@ export const ProductsSlice = createSlice({
     }
 })
 
-export const { setFilter, setCurrentPage, clearAllFilter, setInputSearch, setRelatedSearch, setCartsLength } = ProductsSlice.actions
+export const { setFilter, setCurrentPage, clearAllFilter, setInputSearch, setRelatedSearch } = ProductsSlice.actions
 
 export default ProductsSlice.reducer

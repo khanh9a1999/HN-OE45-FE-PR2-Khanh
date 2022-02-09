@@ -30,5 +30,18 @@
     "Into Price": "Thành tiền",
     "Delete": "Xóa",
     "Added": "Đã thêm",
-    "to the cart!": "vào giỏ hàng"
+    "to the cart!": "vào giỏ hàng",
+    "Review cart": "Xem lại giỏ hàng",
+    "Full name": "Họ và tên",
+    "Email address": "Địa chỉ Email",
+    "Phone number": "Số điện thoại",
+    "Delivery address": "Địa chỉ nhận hàng",
+    "Message": "Lời nhắn",
+    "Payment method": "Hình thức thanh toán",
+    "Delivery information": "Thông tin giao hàng",
+    "Required": "Bắt buộc",
+    "Must be 4 charactor or more": "Cần it nhất 4 ký tự",
+    "Please enter a valid email address": "Vui lòng nhập một địa chỉ email hợp lệ",
+    "Your order has been successfully placed": "Bạn đã đặt hàng thành công",
+    "Confirm delivery information": "Xác nhận địa chỉ nhận hàng"
 }
