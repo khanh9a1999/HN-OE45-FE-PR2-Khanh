@@ -1,26 +1,102 @@
 {
-  "posts": [
+  "data": [
     {
       "id": 1,
-      "name": "json-server",
-      "desc": "typicode",
+      "name": "Typewriter",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
       "brand": "abc",
       "type": "dec",
       "price": 123,
-      "categories": "dsadsa",
-      "image": "dsds",
+      "categories": "Entertainment",
+      "image": "Pr1.png",
       "rating": 2,
-      "price_range": "50-100"
-    }
-  ],
-  "comments": [
+      "price_range": "50-100",
+      "label": "features"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "khanh",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "Entertainment",
+      "image": "Pr1.png",
+      "rating": 2,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 3,
+      "name": "khanh",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "Entertainment",
+      "image": "Pr1.png",
+      "rating": 2,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 3,
+      "name": "khanh",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "Entertainment",
+      "image": "Pr2.png",
+      "rating": 2,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 3,
+      "name": "khdsssssssssanh",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 2,
+      "price_range": "50-100",
+      "label": "features"
+    },
+    {
+      "id": 3,
+      "name": "khdsadsaanh",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "Entertainment",
+      "image": "Pr3.png",
+      "rating": 2,
+      "price_range": "50-100",
+      "label": "Sale off"
+    },
+    {
+      "id": 10,
+      "name": "slaeoff",
+      "desc": "Eligibe for Shipping To Mars or somewhere elses",
+      "detail_desc": "",
+      "brand": "abc",
+      "type": "dec",
+      "price": 123,
+      "categories": "Entertainment",
+      "image": "Pr2.png",
+      "rating": 2,
+      "price_range": "50-100",
+      "label": "Sale off"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
