@@ -1,24 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Prices.module.sass'
 import {useTranslation} from 'react-i18next'
+import { useDispatch, useSelector} from 'react-redux'
+import { setFilter, setCurrentPage} from '../../../../store/slices/ProductSlice'
 
 function Prices() {
 
     const { t } = useTranslation()
+    const [ valueGte, setValueGte ] = useState(0)
+    const [ valueLte, setValueLte ] = useState(0)
+    const [ errorInputPrice, setErrorInputPrice ] = useState('')
+    const dispatch = useDispatch()
+    const filter = useSelector(state => state.products.filter)
 
-    const listPricesRange = ['1$ - 5$', '5$ - 10$', '10$ - 15$', '15$ - 20$', '20$ - 30$']
+    function handleValueGte(e) {
+        if ((e.target.value || valueLte) <= -1) {
+            setValueGte(e.target.value)
+            setErrorInputPrice('Input value must be positive')
+        } else if ((e.target.value && valueLte) >= 0) {
+            setValueGte(e.target.value)
+            setErrorInputPrice('')
+        }
+    }
+
+    function handleValueLte(e) {
+        if ((e.target.value || valueGte) <= -1) {
+            setValueLte(e.target.value)
+            setErrorInputPrice('Input value must be positive')
+        } else if ((e.target.value && valueGte) >= 0) {
+            setValueLte(e.target.value)
+            setErrorInputPrice('')
+        }
+    }
+
+    function handleFilterPrice() {
+        dispatch(setFilter({
+            ...filter,
+            _page:1 ,
+            price_gte: valueGte,
+            price_lte: valueLte
+        }))
+        dispatch(setCurrentPage(1))
+    }
 
     return (
         <div className={styles["prices"]}>
             <h2>{t("Price")}:</h2>
             <div className={styles["prices-range"]}>
-                {
-                    listPricesRange.map( (item, index) => {
-                        return (
-                            <span key={index}>{item}</span>
-                        )
-                    })
-                }
+                <div className={styles["values-input"]}>
+                    <label htmlFor="gte">{t("From")}:</label>
+                    <input type="number" 
+                        id="gte"
+                        value={valueGte}
+                        onChange={handleValueGte}
+                        className={styles.input}
+                        min="0"
+                    />
+                    <label htmlFor="lte">{t("To")}:</label>
+                    <input type="number" 
+                        id="lte"
+                        value={valueLte}
+                        onChange={handleValueLte}
+                        className={styles.input}
+                        min="0"
+                    />
+                </div>
+                {errorInputPrice}
+                <button 
+                    onClick={handleFilterPrice}
+                    className={styles.button}
+                    disabled={errorInputPrice}
+                >
+                    {t("Submit")}
+                </button>
             </div>
         </div>
     );

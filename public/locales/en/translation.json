@@ -14,5 +14,9 @@
     "Show all": "Show All",
     "Sale off": "Sale Off",
     "Prev": "Prev",
-    "Next": "Next"
+    "Next": "Next",
+    "From": "From",
+    "To": "To",
+    "Submit": "Submit",
+    "Input value must be positive": "Input value must be positive"
 }

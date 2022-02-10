@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styles from './Header.module.sass'
 import { Link } from 'react-router-dom'
 import Logo from '../../assets/images/Logo.png'
@@ -8,12 +8,19 @@ import ShoppingCart2LineIcon from 'remixicon-react/ShoppingCart2LineIcon'
 import GlobalLineIcon from 'remixicon-react/GlobalLineIcon'
 import {useTranslation} from 'react-i18next'
 import MenuLineIcon from 'remixicon-react/MenuLineIcon'
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch } from '../../store/slices/ProductSlice'
+import useDebounce from '../../hooks/useDebounce'
 
 function Header() {
 
     const { t, i18n } = useTranslation()
+    const dispatch = useDispatch()
     const [language, setLanguage] = useState("en")
     const [toggle, setToggle] = useState(false)
+    const inputSearch = useSelector( state => state.products.inputSearch)
+    const filter = useSelector( state => state.products.filter)
+    const debounce = useDebounce()
 
     function changeLanguage() {
         if(language === "en") {
@@ -29,6 +36,31 @@ function Header() {
         setToggle(prevState => !prevState)
     }   
 
+    function handleSearchFilterChange(e) {
+        const value = e.target.value
+        dispatch(setInputSearch(value))
+        debounce(() => {
+            dispatch(setFilter({
+                ...filter,
+                _page: 1,
+                name_like: value
+            }))
+            dispatch(setRelatedSearch(value))
+            dispatch(setCurrentPage(1))
+        }, 500)
+    }
+
+    function clearInputSearch() {
+        dispatch(setInputSearch(""))
+        dispatch(setFilter({
+            ...filter,
+            _page: 1,
+            _limit: 2,
+            name_like: ""
+        }))
+        dispatch(setCurrentPage(1))
+    }
+
     return (
         <header className={styles["header"]}>
             <div className={styles["header-container"]}>
@@ -42,8 +74,12 @@ function Header() {
                         <input 
                             type="text"
                             placeholder="Search a Products"
+                            value={inputSearch}
+                            onChange={handleSearchFilterChange}
                         />
-                        <CloseLineIcon className={styles["close-icon"]} />
+                        {
+                            inputSearch && <CloseLineIcon className={styles["close-icon"]} onClick={clearInputSearch} />
+                        }
                     </div>
                     <div className={styles["account"]}>
                         <Link className={styles["sign-in"]} to="/signin">{t("Sign in")}</Link>

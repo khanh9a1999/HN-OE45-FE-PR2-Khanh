@@ -6,12 +6,21 @@
         @include text($font-size: 2.4rem, $font-weight: 500)
         margin-bottom: 2rem
     .prices-range
-        display: flex
-        flex-direction: column
+        @include flex($flex-direction: column)
+        row-gap: 2rem
         font-size: 2rem
         color: $text-black
         padding-bottom: 1rem 
         padding-left: 2rem
-        span:hover
-            color: $text-blue
-            cursor: pointer
+        cursor: pointer
+    .values-input
+        display: flex
+        column-gap: 2rem
+    input
+        padding: 0 1rem
+        width: 10rem
+        border-radius: 5px
+        border: 1px solid $border-gray
+    button
+        border-radius: 5px
+        border: 1px solid $border-gray

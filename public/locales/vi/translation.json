@@ -14,5 +14,9 @@
     "Show all": "Tất cả",
     "Sale off": "Khuyến mãi",
     "Prev" : "Trước",
-    "Next" : "Tiếp"
+    "Next" : "Tiếp",
+    "From": "Từ",
+    "To": "Đến",
+    "Submit": "Gửi",
+    "Input value must be positive": "Giá trị đầu vào phải là số dương"
 }
