@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './ProductItemGridView.module.sass'
 import LuggageCartLineIcon from 'remixicon-react/LuggageCartLineIcon'
 import Star from '../Star/Star'

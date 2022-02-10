@@ -43,5 +43,7 @@
     "Must be 4 charactor or more": "Must be 4 charactor or more",
     "Please enter a valid email address": "Please enter a valid email address",
     "Your order has been successfully placed": "Your order has been successfully placed",
-    "Confirm delivery information": "Confirm delivery information"
+    "Confirm delivery information": "Confirm delivery information",
+    "Password must be 7-19 charactors and contain at least one letter, one number and a special charactors": "Password must be 7-19 charactors and contain at least one letter, one number and a special charactors",
+    "Sign In": "Sign In"
 }
