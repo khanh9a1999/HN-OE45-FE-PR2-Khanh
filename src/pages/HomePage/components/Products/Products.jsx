@@ -9,9 +9,9 @@ import Pagination from '../../../../components/Pagination/Pagination'
 import { useTranslation } from 'react-i18next'
 import { getAllProducts, setFilter, getPagination, setCurrentPage, setInputSearch  } from '../../../../store/slices/ProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import ToastNotify from '../../../../components/ToastNotify/ToastNotify'
 
 function Products() {
-
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const VIEW_MODES = [
@@ -29,7 +29,8 @@ function Products() {
     const filter = useSelector( state => state.products.filter)
     const [viewMode, setViewMode] = useState(VIEW_MODES[0].value);
     const [productsList, setProductsList] = useState(PRODUCTS_LIST[0])   
-    const relatedSearch = useSelector( state => state.products.relatedSearch) 
+    const relatedSearch = useSelector( state => state.products.relatedSearch)
+    const { type, message } = useSelector( state => state.notification) 
 
     useEffect(() => {
         dispatch(getAllProducts(filter))
@@ -154,6 +155,11 @@ function Products() {
                             <span className={styles["item-related"]} key={index} onClick={() => handleFilterRalatedSearch(item)}>{item}</span>
                         )
                     })
+                }
+            </div>
+            <div className={styles["toast"]}>
+                {
+                    message && <ToastNotify type={type} message={message}/>
                 }
             </div>
             {

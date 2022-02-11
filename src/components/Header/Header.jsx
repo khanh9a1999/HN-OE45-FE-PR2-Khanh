@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import styles from './Header.module.sass'
 import { Link } from 'react-router-dom'
 import Logo from '../../assets/images/Logo.png'
@@ -9,11 +9,10 @@ import GlobalLineIcon from 'remixicon-react/GlobalLineIcon'
 import {useTranslation} from 'react-i18next'
 import MenuLineIcon from 'remixicon-react/MenuLineIcon'
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch } from '../../store/slices/ProductSlice'
+import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch, setCartsLength } from '../../store/slices/ProductSlice'
 import useDebounce from '../../hooks/useDebounce'
 
 function Header() {
-
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
     const [language, setLanguage] = useState("en")
@@ -21,6 +20,11 @@ function Header() {
     const inputSearch = useSelector( state => state.products.inputSearch)
     const filter = useSelector( state => state.products.filter)
     const debounce = useDebounce()
+    const cartsLength = useSelector( state => state.products.cartsLength)
+
+    useEffect(()=> {
+        dispatch(setCartsLength(cartsLength))
+    }, [cartsLength])
 
     function changeLanguage() {
         if(language === "en") {
@@ -64,7 +68,9 @@ function Header() {
     return (
         <header className={styles["header"]}>
             <div className={styles["header-container"]}>
-                <img className={styles["logo"]} src={Logo} alt="logo" />
+                <Link to="/">
+                    <img className={styles["logo"]} src={Logo} alt="logo" />
+                </Link>
                 <div className={ toggle ? styles["toggle"] :  styles["tool-pc"] }>
                     <GlobalLineIcon className={styles["change-language"]}
                         onClick={changeLanguage}
@@ -87,6 +93,7 @@ function Header() {
                         <Link className={styles["cart"]} to="/cart">
                             <ShoppingCart2LineIcon className={styles["cart-icon"]} />
                             {t("Cart")}
+                            <span className={styles["cart-length"]}>{cartsLength}</span>
                         </Link>
                     </div>
                 </div>

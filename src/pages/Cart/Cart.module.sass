@@ -1,0 +1,44 @@
+@import ../../styles/_variables
+@import ../../styles/_mixins
+
+.cart
+    margin-top: 5rem
+    padding: 0 2rem
+    position: relative
+    h2
+        @include text($font-size: 2.4rem, $font-weight: 500)
+        margin-bottom: 2rem
+    .table-cart
+        font-size: 2rem
+        text-align: center
+    td
+        font-size: 1.8rem
+        vertical-align: middle
+    .delete-icon:hover
+        cursor: pointer
+    .toast
+        @include position($position: fixed, $top: 7rem, $right: 2rem)
+        font-size: 2.4rem
+        background: $text-gray
+        border-radius: 1rem
+        border: none
+        span
+            color: $white-color
+            font-size: 2rem
+        button
+            font-size: 1.8rem
+            font-weight: 500
+            border: 1px solid $border-gray
+            border-radius: 1rem
+            &:hover
+                background: $text-blue
+                color: $white-color
+                border: 1px solid $text-blue
+    .input-qnt
+        margin: 0 1rem
+        border-radius: 5px
+        border: 1px solid $border-gray
+        padding: 0 1rem
+    .btn-qnt
+        border-radius: 5px
+        border: 1px solid $border-gray

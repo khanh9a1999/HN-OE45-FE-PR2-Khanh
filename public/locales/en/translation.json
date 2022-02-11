@@ -18,5 +18,17 @@
     "From": "From",
     "To": "To",
     "Submit": "Submit",
-    "Input value must be positive": "Input value must be positive"
+    "Input value must be positive": "Input value must be positive",
+    "Confirm": "Confirm",
+    "My cart": "My cart",
+    "Ok": "Ok",
+    "Cancel": "Cancel",
+    "Product Image": "Product Image",
+    "Product Name": "Product Name",
+    "Product Unit Price": "Product Unit Price",
+    "Product Quantity": "Product Quantity",
+    "Into Price": "Into Price",
+    "Delete": "Delete",
+    "Added": "Added",
+    "to the cart!": "to the cart!"
 }

@@ -2,7 +2,7 @@
   "data": [
     {
       "id": 1,
-      "name": "Typewriter",
+      "name": "Một",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Youtube",
@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "name": "khanh",
+      "name": "Hai",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Netflix",
@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "name": "khanh",
+      "name": "Ba",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Spotify",
@@ -43,8 +43,8 @@
       "label": "features"
     },
     {
-      "id": 3,
-      "name": "khanh",
+      "id": 4,
+      "name": "Bốn",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Steam",
@@ -57,8 +57,8 @@
       "label": "features"
     },
     {
-      "id": 3,
-      "name": "khdsssssssssanh",
+      "id": 5,
+      "name": "Năm",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Adobe",
@@ -71,8 +71,8 @@
       "label": "features"
     },
     {
-      "id": 3,
-      "name": "khdsadsaanh",
+      "id": 6,
+      "name": "Sáu",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Discord",
@@ -85,8 +85,8 @@
       "label": "Sale off"
     },
     {
-      "id": 10,
-      "name": "slaeoff",
+      "id": 7,
+      "name": "Bẩy",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Youtube",
@@ -99,8 +99,8 @@
       "label": "Sale off"
     },
     {
-      "id": 11,
-      "name": "CocaCola",
+      "id": 8,
+      "name": "Tám",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Youtube",
@@ -113,8 +113,8 @@
       "label": "Sale off"
     },
     {
-      "id": 12,
-      "name": "Protein Cacao",
+      "id": 9,
+      "name": "Chín",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
       "detail_desc": "",
       "brand": "Netflix",
@@ -127,10 +127,10 @@
       "label": "Features"
     },
     {
-      "id": 13,
-      "name": "Cd Key Vip",
+      "id": 10,
+      "name": "Mười",
       "desc": "Eligibe for Shipping To Mars or somewhere elses",
-      "detail_desc": "",
+      "detail_desc": "ok",
       "brand": "Netflix",
       "type": "Cd Key",
       "price": 15,
