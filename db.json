@@ -140,5 +140,52 @@
       "price_range": "50-100",
       "label": "Features"
     }
+  ],
+  "order": [
+    {
+      "localPaymentInfo": [
+        {
+          "fullName": "Trương Quốc Khánh",
+          "email": "khanh9a1999@gmail.com",
+          "phone": "0348397685",
+          "address": "Hà nội",
+          "message": "nhe nhang",
+          "paymentsValue": "Payment on delivery"
+        }
+      ],
+      "localCartItems": [
+        {
+          "id": 1,
+          "name": "Một",
+          "desc": "Eligibe for Shipping To Mars or somewhere elses",
+          "detail_desc": "",
+          "brand": "Youtube",
+          "type": "Action",
+          "price": 123,
+          "categories": "Entertainment",
+          "image": "Pr1.png",
+          "rating": 1,
+          "price_range": "50-100",
+          "label": "features",
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "name": "Hai",
+          "desc": "Eligibe for Shipping To Mars or somewhere elses",
+          "detail_desc": "",
+          "brand": "Netflix",
+          "type": "3D",
+          "price": 123,
+          "categories": "Work",
+          "image": "Pr1.png",
+          "rating": 2,
+          "price_range": "50-100",
+          "label": "features",
+          "quantity": 1
+        }
+      ],
+      "id": 1
+    }
   ]
 }

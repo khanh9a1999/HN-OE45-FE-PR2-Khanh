@@ -1,16 +1,13 @@
 import React from 'react';
 import DeleteBinLineIcon from 'remixicon-react/DeleteBinLineIcon'
-import { getLocalStorage } from '../../../helper/helper'
 import styles from '../Cart.module.sass'
 import clsx from 'clsx'
 
-function CartItem({item, stt, getCartDelete, toggleIsChangeQuantity }) {
+function CartItem({item, stt, getCartDelete, toggleIsChangeQuantity, cartItems }) {
     const { name, image, id, price, quantity } = item
-    const localCart = getLocalStorage('local-cart')
     
     function handleChangeQnt(e) {
         let value
-
         switch (e) {
             case 'increment': 
                 value = quantity + 1
@@ -22,8 +19,7 @@ function CartItem({item, stt, getCartDelete, toggleIsChangeQuantity }) {
                 value = isNaN(e.target.value) ? 1 : e.target.value
                 break;
         }
-        
-        const newLocalCarts = updateCartList(id, value, localCart)
+        const newLocalCarts = updateCartList(id, value, cartItems)
         localStorage.setItem('local-cart', JSON.stringify(newLocalCarts))
         toggleIsChangeQuantity()
     }

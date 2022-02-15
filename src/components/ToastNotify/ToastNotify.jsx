@@ -28,14 +28,16 @@ function ToastNotify({type, message}) {
     }
 
     return (
-        <Toast className={styles["toast-notify"]}>
-            <Toast.Header>
-                <strong className="me-auto">{setHeaderByType(type)}</strong>
-            </Toast.Header>
-            <Toast.Body>
-                <span>{message}</span> 
-            </Toast.Body>
-        </Toast>
+        <section className={styles['toast']}>
+            <Toast className={styles["toast-notify"]}>
+                <Toast.Header>
+                    <strong className="me-auto">{setHeaderByType(type)}</strong>
+                </Toast.Header>
+                <Toast.Body>
+                    <span>{message}</span> 
+                </Toast.Body>
+            </Toast>
+        </section>
     );
 }
 
