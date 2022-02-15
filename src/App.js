@@ -6,6 +6,7 @@ import ConfirmPayment from './pages/ConfirmPayment/ConfirmPayment'
 import "./styles/app.sass"
 import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirm-payment" element={<ConfirmPayment />} />
           <Route path="/signin" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </main>
     </div>

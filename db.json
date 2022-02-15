@@ -186,6 +186,36 @@
         }
       ],
       "id": 1
+    },
+    {
+      "localPaymentInfo": [
+        {
+          "fullName": "Đức Chiến",
+          "email": "chienvtkg150vn@yahoo.com",
+          "phone": "0348397685",
+          "address": "Hà nội",
+          "message": "Vip",
+          "paymentsValue": "Payment on delivery"
+        }
+      ],
+      "localCartItems": [
+        {
+          "id": 1,
+          "name": "Một",
+          "desc": "Eligibe for Shipping To Mars or somewhere elses",
+          "detail_desc": "",
+          "brand": "Youtube",
+          "type": "Action",
+          "price": 123,
+          "categories": "Entertainment",
+          "image": "Pr1.png",
+          "rating": 1,
+          "price_range": "50-100",
+          "label": "features",
+          "quantity": 1
+        }
+      ],
+      "id": 2
     }
   ]
 }
