@@ -43,5 +43,7 @@
     "Must be 4 charactor or more": "Cần it nhất 4 ký tự",
     "Please enter a valid email address": "Vui lòng nhập một địa chỉ email hợp lệ",
     "Your order has been successfully placed": "Bạn đã đặt hàng thành công",
-    "Confirm delivery information": "Xác nhận địa chỉ nhận hàng"
+    "Confirm delivery information": "Xác nhận địa chỉ nhận hàng",
+    "Password must be 7-19 charactors and contain at least one letter, one number and a special charactors": "Mật khẩu phải có 7-19 ký tự và chứa ít nhất một chữ cái, một số và một ký tự đặc biệt",
+    "Sign In": "Đăng nhập"
 }
