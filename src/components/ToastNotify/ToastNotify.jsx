@@ -1,8 +1,8 @@
 import React from 'react';
+import styles from './ToastNotify.module.sass'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { clearNotification } from '../../store/slices/NotificationSlice'
-import styles from './ToastNotify.module.sass'
 import { Toast } from 'react-bootstrap'
 
 function ToastNotify({type, message}) {

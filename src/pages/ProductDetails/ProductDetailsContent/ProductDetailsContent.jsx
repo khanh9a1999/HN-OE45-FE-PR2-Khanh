@@ -28,7 +28,7 @@ function ProductDetailsContent({productDesc}) {
 
     return (
         <section className={styles["product-details"]}>
-            <img src={`../assets/images/${productDesc.image}`} alt={productDesc.image} />
+            <img className={styles["product-img"]} src={`../assets/images/${productDesc.image}`} alt={productDesc.image} />
             <div className={styles["product-info"]}>
                 <div className={styles["product-name"]}>
                     <div className={styles["product-title"]}>

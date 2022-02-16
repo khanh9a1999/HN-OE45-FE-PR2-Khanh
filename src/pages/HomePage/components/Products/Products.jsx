@@ -6,14 +6,17 @@ import clsx from 'clsx'
 import ProductItemGridView from '../../../../components/ProductItemGridView/ProductItemGridView'
 import ProductItemListView from '../../../../components/ProductItemListView/ProductItemListView' 
 import Pagination from '../../../../components/Pagination/Pagination'
+import ToastNotify from '../../../../components/ToastNotify/ToastNotify'
+import LoadingProduct from '../../../../components/LoadingProduct/LoadingProduct'
 import { useTranslation } from 'react-i18next'
 import { getAllProducts, setFilter, getPagination, setCurrentPage, setInputSearch  } from '../../../../store/slices/ProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import ToastNotify from '../../../../components/ToastNotify/ToastNotify'
 
 function Products() {
     const { t } = useTranslation()
+    const pagination = useSelector( state => state.products.pagination)
     const dispatch = useDispatch()
+    const { _limit, _totalRows } = pagination
     const VIEW_MODES = [
         {
             value: 'grid',
@@ -30,6 +33,7 @@ function Products() {
     const [viewMode, setViewMode] = useState(VIEW_MODES[0].value);
     const [productsList, setProductsList] = useState(PRODUCTS_LIST[0])   
     const relatedSearch = useSelector( state => state.products.relatedSearch)
+    const relatedSearchFilted = relatedSearch.filter( item => item !== "")
     const { type, message } = useSelector( state => state.notification) 
 
     useEffect(() => {
@@ -43,9 +47,9 @@ function Products() {
 
     function ListView() {
         return (
-            <div className={styles["list-view"]}>
+            <div className={styles['list-view']}>
                 { 
-                    isLoading ? <h1>Loading...</h1> : listAllProducts.map((item, index) => (
+                    isLoading ? <LoadingProduct /> : listAllProducts.map((item, index) => (
                                                         <ProductItemGridView
                                                             item={item}
                                                             key={index}
@@ -58,9 +62,9 @@ function Products() {
 
     function GridView() {
         return (
-            <div className={styles["grid-view"]}>
+            <div className={styles['grid-view']}>
                 {
-                    isLoading ? <h1>Loading...</h1> : listAllProducts.map((item, index) => (
+                    isLoading ? <LoadingProduct /> : listAllProducts.map((item, index) => (
                         <ProductItemListView
                             item={item}
                             key={index}
@@ -72,10 +76,12 @@ function Products() {
     }
 
     function handleSortByProductsList(item) {
-        if (item === "Show All") {
+        if (item == 'Show All') {
             dispatch(setFilter({
+                ...filter,
+                _limit: 8,
                 _page: 1,
-                _limit: 2
+                label_like: '',
             }))
             setProductsList(item)
         } else {
@@ -111,18 +117,18 @@ function Products() {
     }
 
     return (
-        <div className={styles["products"]}>
-            <div className={styles["utilities-products"]}>
-                <select className={styles["sort-price"]} onChange={handleSortByPrice}>
-                    <option value="default">{t("Default")}</option> 
-                    <option value="esc">{t("Price ESC")}</option>
-                    <option value="desc">{t("Price DESC")}</option>
+        <div className={styles['products']}>
+            <div className={styles['utilities-products']}>
+                <select className={styles['sort-price']} onChange={handleSortByPrice}>
+                    <option value='default'>{t('Default')}</option> 
+                    <option value='esc'>{t('Price ESC')}</option>
+                    <option value='desc'>{t('Price DESC')}</option>
                 </select>
-                <div className={styles["opt-products"]}>
+                <div className={styles['opt-products']}>
                     {
                         PRODUCTS_LIST.map( (item, index) => (
                             <button className={clsx(
-                                styles["button"],
+                                styles['button'],
                                 item === productsList && styles.active
                               )}
                               key={index}
@@ -135,7 +141,7 @@ function Products() {
                     {
                         VIEW_MODES.map(({ value, icon: Icon }, index) => (
                             <button className={clsx(
-                                styles["button"],
+                                styles['button'],
                                 value === viewMode && styles.active
                               )}
                               key={index}
@@ -147,17 +153,17 @@ function Products() {
                     }
                 </div>
             </div>
-            <div className={styles["related-search"]}>
+            <div className={styles['related-search']}>
                 <h2>Related:</h2>
                 {
-                    relatedSearch.map((item, index) => {
+                    relatedSearchFilted.map((item, index) => {
                         return (
-                            <span className={styles["item-related"]} key={index} onClick={() => handleFilterRalatedSearch(item)}>{item}</span>
+                            <span className={styles['item-related']} key={index} onClick={() => handleFilterRalatedSearch(item)}>{item}</span>
                         )
                     })
                 }
             </div>
-            <div className={styles["toast"]}>
+            <div className={styles['toast']}>
                 {
                     message && <ToastNotify type={type} message={message}/>
                 }
@@ -165,7 +171,10 @@ function Products() {
             {
                 viewMode == 'grid' ? <ListView /> : <GridView />
             }
-            <Pagination />
+            <Pagination 
+                _limit={_limit}
+                _totalRows={_totalRows}
+            />
         </div>
     );
 }

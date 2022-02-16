@@ -1,18 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap')
 @import ./_mixins
 @import ./_variables
 
-@font-face 
-    font-family: 'Poppins', sans-serif
-    src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap')
-
-*
-    box-sizing: inherit
-
 html
-    font-family: 'Poppins', sans-serif
+    font-family: 'Sora', sans-serif 
     box-sizing: border-box
     font-size: 62.5%
     @include maxWidth($desktop)
         font-size: 50%
-    @include maxWidth($tablet)
-        font-size: 37.5%
+
+*
+    box-sizing: inherit
+    font-family: inherit

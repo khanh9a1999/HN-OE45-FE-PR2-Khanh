@@ -35,7 +35,7 @@ function ProductDetails() {
     const handleFetchSimilarProducts = () => {
         dispatch(setFilterSimilar({
             ...filterSimilar,
-            _limit: _limit + 2
+            _limit: _limit + 4
         }))
     }
 
@@ -52,7 +52,7 @@ function ProductDetails() {
                     productDesc={productDesc}
                 />
             }
-            <section>
+            <section className={styles["similar-products__list"]}>
                 <h2 className={styles["product-title"]}>{t("Similar products")} :</h2>
                 <div className={styles['similar-products']}>
                     {

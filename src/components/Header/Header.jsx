@@ -1,26 +1,28 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './Header.module.sass'
-import { Link } from 'react-router-dom'
 import Logo from '../../assets/images/Logo.png'
 import SearchLineIcon from 'remixicon-react/SearchLineIcon'
 import CloseLineIcon from 'remixicon-react/CloseLineIcon'
 import ShoppingCart2LineIcon from 'remixicon-react/ShoppingCart2LineIcon'
 import GlobalLineIcon from 'remixicon-react/GlobalLineIcon'
-import {useTranslation} from 'react-i18next'
 import MenuLineIcon from 'remixicon-react/MenuLineIcon'
+import useDebounce from '../../hooks/useDebounce'
+import LogoutBoxLineIcon from 'remixicon-react/LogoutBoxLineIcon'
+import { Link } from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter, setCurrentPage, setInputSearch, setRelatedSearch } from '../../store/slices/ProductSlice'
 import { setCartsLength } from '../../store/slices/CartSlice';
-import useDebounce from '../../hooks/useDebounce'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../../firebase-config'
-import LogoutBoxLineIcon from 'remixicon-react/LogoutBoxLineIcon'
 import { DropdownButton, Dropdown } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { getLocalStorage } from '../../helper/helper'
+import { useLocation } from 'react-router-dom'
 
 function Header() {
     const { t, i18n } = useTranslation()
+    const location = useLocation()
     const dispatch = useDispatch()
     const [language, setLanguage] = useState("en")
     const [toggle, setToggle] = useState(false)
@@ -31,6 +33,7 @@ function Header() {
     const [user, setUser] = useState({})
     const navigate = useNavigate()
     const customerInfo = getLocalStorage('customer-info')
+    const hasLinkToHomePage = location.pathname === '/'
     
     useEffect(()=> {
         dispatch(setCartsLength(cartsLength))
@@ -82,7 +85,7 @@ function Header() {
         dispatch(setFilter({
             ...filter,
             _page: 1,
-            _limit: 2,
+            _limit: 8,
             name_like: ""
         }))
         dispatch(setCurrentPage(1))
@@ -98,18 +101,21 @@ function Header() {
                     <GlobalLineIcon className={styles["change-language"]}
                         onClick={changeLanguage}
                     />
-                    <div className={styles["header-search"]}>
-                        <SearchLineIcon className={styles["search-icon"]} />
-                        <input 
-                            type="text"
-                            placeholder="Search a Products"
-                            value={inputSearch}
-                            onChange={handleSearchFilterChange}
-                        />
-                        {
-                            inputSearch && <CloseLineIcon className={styles["close-icon"]} onClick={clearInputSearch} />
-                        }
-                    </div>
+                    {
+                        hasLinkToHomePage && 
+                        <div className={styles["header-search"]}>
+                            <SearchLineIcon className={styles["search-icon"]} />
+                            <input 
+                                type="text"
+                                placeholder="Search a Products"
+                                value={inputSearch}
+                                onChange={handleSearchFilterChange}
+                            />
+                            {
+                                inputSearch && <CloseLineIcon className={styles["close-icon"]} onClick={clearInputSearch} />
+                            }
+                        </div>
+                    }
                     <div className={styles["account"]}>
                         {
                             user 

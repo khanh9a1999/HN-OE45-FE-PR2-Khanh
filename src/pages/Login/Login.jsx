@@ -1,9 +1,10 @@
 import React from 'react';
 import FormGroup from '../../components/FormGroup/FormGroup';
-import { Form, Button } from 'react-bootstrap'
-import { useFormik } from 'formik'
 import * as Yup from 'yup' 
 import styles from './Login.module.sass'
+import ToastNotify from '../../components/ToastNotify/ToastNotify'
+import { Form, Button } from 'react-bootstrap'
+import { useFormik } from 'formik'
 import { regexEmail, regexPassword } from '../../consts/consts'
 import { useTranslation } from 'react-i18next'
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -11,7 +12,6 @@ import { auth } from "../../firebase-config";
 import { getUserDetailDbJson } from '../../store/slices/UserSlice'
 import { setNotification } from '../../store/slices/NotificationSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import ToastNotify from '../../components/ToastNotify/ToastNotify'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {

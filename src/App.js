@@ -3,11 +3,17 @@ import HomePage from './pages/HomePage/HomePage'
 import Cart from './pages/Cart/Cart'
 import Payment from './pages/Payment/Payment'
 import ConfirmPayment from './pages/ConfirmPayment/ConfirmPayment'
-import "./styles/app.sass"
-import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
+import { useSelector } from 'react-redux';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import "./App.sass"
+
+// export function ProtectedRoute() {
+//   const role = useSelector(state => state.user.role)
+//   return role === 1 ? <Payment /> : <Navigate to="/" />
+// }
 
 function App() {
   return (
